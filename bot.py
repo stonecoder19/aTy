@@ -17,8 +17,7 @@ TEMPLATES = [
     "{tweet_volume} people worldwide a tweet bout dis enuh: {name}, pre: {url}",
     "{tweet_volume} people worldwide a tweet bout {name}, see wah gwan {url}",
     "Hol' on... {tweet_volume} people worldwide still a chat bout {name}? pre: {url}"
-    "{tweet_volume} people round d world a tweet bout {name}, unuh look yah {url}"
-]
+    "{tweet_volume} people round d world a tweet bout {name}, unuh look yah {url}"]
 
 
 def format_tweet(trend):
