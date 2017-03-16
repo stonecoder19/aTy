@@ -12,11 +12,12 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 WORLD_WOEID = 1
-INTERVAL = 600
+INTERVAL = 3600
 TEMPLATES = [
-    "{tweet_volume} people a tweet bout dis enuh: {name}, pre: {url}",
-    "{tweet_volume} people a tweet bout {name}, see wah gwan {url}",
-    "Hol' on... {tweet_volume} people still a chat bout {name}? pre: {url}"
+    "{tweet_volume} people worldwide a tweet bout dis enuh: {name}, pre: {url}",
+    "{tweet_volume} people worldwide a tweet bout {name}, see wah gwan {url}",
+    "Hol' on... {tweet_volume} people worldwide still a chat bout {name}? pre: {url}"
+    "{tweet_volume} people round d world a tweet bout {name}, unuh look yah {url}"
 ]
 
 
