@@ -4,10 +4,11 @@ from exceptions import UpdateError
 from setup import TWITTER_API_ID, EXCHANGE_RATE_API_ID
 
 INTERVAL = 3600
+LAST_UPDATE_TIME = INTERVAL * 11  # 12 updates, first one is at t=0
 
 
 def get_next_update(apis, last_updated_time=None):
-    if (last_updated_time is None or last_updated_time == 39600):
+    if (last_updated_time is None or last_updated_time == LAST_UPDATE_TIME):
         next_update_time = 0
     else:
         next_update_time = last_updated_time + INTERVAL
@@ -108,15 +109,15 @@ class ExchangeRateUpdate(Update):
 
 SCHEDULE = {
     0: WorldWideTrendUpdate,
-    3600: WorldWideTrendUpdate,
-    7200: ExchangeRateUpdate,
-    10800: WorldWideTrendUpdate,
-    14400: WorldWideTrendUpdate,
-    18000: WorldWideTrendUpdate,
-    21600: WorldWideTrendUpdate,
-    25200: WorldWideTrendUpdate,
-    28800: WorldWideTrendUpdate,
-    32400: WorldWideTrendUpdate,
-    36000: WorldWideTrendUpdate,
-    39600: WorldWideTrendUpdate
+    INTERVAL * 1: WorldWideTrendUpdate,
+    INTERVAL * 2: ExchangeRateUpdate,
+    INTERVAL * 3: WorldWideTrendUpdate,
+    INTERVAL * 4: WorldWideTrendUpdate,
+    INTERVAL * 5: WorldWideTrendUpdate,
+    INTERVAL * 6: WorldWideTrendUpdate,
+    INTERVAL * 7: WorldWideTrendUpdate,
+    INTERVAL * 8: WorldWideTrendUpdate,
+    INTERVAL * 9: WorldWideTrendUpdate,
+    INTERVAL * 10: WorldWideTrendUpdate,
+    LAST_UPDATE_TIME: WorldWideTrendUpdate
 }
