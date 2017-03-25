@@ -25,10 +25,11 @@ And run  `$ python bot.py > log.file &`
 #### Style Guide
 
 For consistency, the pep8 standard is used to format the code. For that reason [autopep8](https://pypi.python.org/pypi/autopep8) is a dependency
-and will be installed after you `pip install`
+and will be installed after you `$ pip install`
 
 To format your code: `$ autopep8 --in-place --aggressive --aggressive *.py`
 
 ### TBA
 - Roadmap
 - Link to account
+- Tests and Continuous Integration
