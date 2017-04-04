@@ -18,7 +18,7 @@ Create a [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/): 
 
 Install the dependencies: `$ pip install -r requirements.txt`
 
-And run  `$ python bot.py > log.file &`
+And run  `$ nohup python bot.py > log.file &`
 
 (& is used to run as a background process, to close: use `$ fg` to bring it to the foreground, then Ctrl-C. Alternatively you can use `$ kill pid`)
 
