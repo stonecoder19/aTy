@@ -29,7 +29,15 @@ and will be installed after you `$ pip install`
 
 To format your code: `$ autopep8 --in-place --aggressive --aggressive *.py`
 
+## Contributing 
+
+Bug reports, issues and pull requests are welcome! 
+Please open or reference an issue when opening a new pull request.
+
+View the [public roadmap](https://trello.com/b/RZ3brC4L/aty-public-roadmap)
+
+or join the more in-depth discussion in the [Google Group](https://groups.google.com/forum/#!forum/jam-twitter-bot)
+
 ### TBA
-- Roadmap
 - Link to account
 - Tests and Continuous Integration
