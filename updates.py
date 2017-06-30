@@ -109,8 +109,9 @@ class ExchangeRateUpdate(Update):
 
 class JamaicanEventUpdate(Update):
     TEMPLATES = ["Mad party name {title} a gwaan on {date}.{summary}",
-                "You need fi touch {title}.Duh road pon {date}.{summary}"
-    ]
+                 "You need fi touch {title}.Duh road pon {date}.{summary}"
+                 ]
+
     def __init__(self, config):
         Update.__init__(self, config)
 
@@ -120,13 +121,11 @@ class JamaicanEventUpdate(Update):
 
     def update(self):
         try:
-            
+
             twitter_api = self.config[TWITTER_API_ID]
-            page = requests.get("http://pripsjamaica.com/events/list/8/parties")
-            web_scrapper = WebScraper(page)
-            events = web_scrapper.parse_events()
-            latest_event = event[0]
-            
+            web_scrapper = WebScraper()
+            events = web_scrapper.parse_events("http://pripsjamaica.com/events/list/8/parties")
+            latest_event = events[0]
 
             event_dict = {
                 'title': event.title,
@@ -138,25 +137,6 @@ class JamaicanEventUpdate(Update):
             twitter_api.update_status(tweet)
         except Exception as e:
             raise UpdateException(e)
-
-
-class MentionService(Update):
-    mentions = api.mentions_timeline(count=1)
-    for mention in mentions:
-        text = mention.text
-        screen_name = mention.screen_name
-
-
-
-
-
-
-class FollowService:
-    def follow():
-        for follower in tweepy.Cursor(api.followers).items():
-            follower.follow()
-            print (follower.screen_name)
-
 
 
 SCHEDULE = {
