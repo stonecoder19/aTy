@@ -138,6 +138,40 @@ class JamaicanEventUpdate(Update):
         except Exception as e:
             raise UpdateException(e)
 
+class RetweetUpdate(Update):
+    def update(self):
+        try:
+            twitter_api = self.config[TWITTER_API_ID]
+            worldwide_trends = twitter_api.trends_place(self.WORLD_WOEID)[0]
+
+            # Only tweet Ascii trends
+            valid_trend = False
+            while not valid_trend:
+                random_trend = random.choice(worldwide_trends['trends'])
+                try:
+                    random_trend['name'].encode('ascii')
+                    trend = random_trend['name']
+                    for tweet in tweepy.Cursor(api.search,q=trend,since='2016-11-25',
+                           until='2016-11-27',
+                           geocode='18.02323,-77.2323,100km',
+                           lang='eng').items(10):
+                        try:
+                            tweet.retweet()
+                        except tweepy.TweepError as e:
+                            print(e.reason)
+                        except StopIteration:
+                            break
+
+                    
+                    valid_trend = True
+                except UnicodeEncodeError:
+                    pass
+
+        except Exception as e:
+            raise UpdateException(e)
+
+    
+
 
 SCHEDULE = {
     0: WorldWideTrendUpdate,
