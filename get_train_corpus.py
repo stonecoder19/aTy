@@ -1,4 +1,7 @@
-
+import json
+import os
+import re
+import itertools
 
  
 max_tweets = 3200
@@ -83,6 +86,14 @@ def get_qa_tweets(screen_name,max_tweets):
 	answers = [normalize_tweet(a) for a in answers]
 	return questions,answers
 
+
+def save_tweet_to_file(screen_name,max_tweets):
+  questions, answers = get_qa_tweets(screen_name,max_tweets)
+  with open("questions.txt","w+") as f:
+    f.write("\n".join(questions))
+
+  with open("answers.txt","w+") as f:
+    f.write("\n".join(answers))
 
 
 
